@@ -1,26 +1,12 @@
 import { Request, Response, Router } from 'express';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import { MongoClient } from 'mongodb';
-require('dotenv').config()
+import { getDb } from '../../db/connection';
 
 const router = Router();
 const JWT_SECRET = process.env.JWT_SECRET as string;
 const saltRounds = 12;
 
-// MongoDB connection URI
-const uri: string = process.env.DATABASE_URL as string;
-
-const client = new MongoClient(uri);
-let dbConnection: any = null;
-
-async function getDb() {
-    if (!dbConnection) {
-        await client.connect();
-        dbConnection = client.db('mydatabase'); 
-    }
-    return dbConnection;
-}
 
 router.post("/register", async (req: Request, res: Response) => {
     const { fullName, email, password } = req.body;
