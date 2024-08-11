@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const images = [
   '/carousel/1.jpg',
@@ -45,9 +45,10 @@ export default function Hero() {
               }`}
               data-carousel-item
             >
+               
               <img
                 src={image}
-                className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                className="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                 alt={`Slide ${index + 1}`}
               />
             </div>
