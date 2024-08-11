@@ -19,27 +19,22 @@ router.post("/register", async (req: Request, res: Response) => {
         const db = await getDb();
         const usersCollection = db.collection('users');
 
-        // Check if the user already exists
         const existingUser = await usersCollection.findOne({ email });
 
         if (existingUser) {
             return res.status(400).json({ message: "User already registered" });
         }
 
-        // Hash the password
         const hashPassword = await bcrypt.hash(password, saltRounds);
 
-        // Create a new user
         const newUser = {
             email,
             fullName,
             password: hashPassword
         };
 
-        // Insert the new user into the database
         const result = await usersCollection.insertOne(newUser);
 
-        // Create a JWT token
         const token = jwt.sign({ userId: result.insertedId, email: newUser.email }, JWT_SECRET);
 
         return res.status(201).json({ message: 'Registration successful', userId: result.insertedId, token });
