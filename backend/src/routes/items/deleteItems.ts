@@ -1,6 +1,6 @@
 import { Request, Response, Router } from 'express';
 import { MongoClient, ObjectId } from 'mongodb';
-import authenticate from '../middleware/authenticate';  // Ensure you have the authenticate middleware
+import {authenticate} from '../../middleware/authenticate';  // Ensure you have the authenticate middleware
 
 const router = Router();
 const client = new MongoClient(process.env.DATABASE_URL as string);
