@@ -11,7 +11,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchMyItems = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/v1/my-items', {
+        const response = await axios.get('https://capiall-olx-1.onrender.com/v1/my-items', {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         });
         setMyItems(response.data);
@@ -22,7 +22,7 @@ const Dashboard = () => {
 
     const fetchMyPurchases = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/v1/my-purchases', {
+        const response = await axios.get('https://capiall-olx-1.onrender.com/v1/my-purchases', {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         });
         setPurchases(response.data);
@@ -41,11 +41,11 @@ const Dashboard = () => {
 
   const handleUpdate = async (updatedItem: any) => {
     try {
-      await axios.put(`http://localhost:3000/v1/items/${updatedItem._id}`, updatedItem, {
+      await axios.put(`https://capiall-olx-1.onrender.com/v1/items/${updatedItem._id}`, updatedItem, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       // Refresh items
-      const response = await axios.get('http://localhost:3000/v1/my-items', {
+      const response = await axios.get('https://capiall-olx-1.onrender.com/v1/my-items', {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       setMyItems(response.data);

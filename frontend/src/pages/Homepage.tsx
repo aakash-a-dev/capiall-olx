@@ -7,7 +7,7 @@ const HomePage = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await axios.get('http://localhost:3000/v1/items');
+      const response = await axios.get('https://capiall-olx-1.onrender.com/v1/items');
       setProducts(response.data);
     };
     fetchProducts();

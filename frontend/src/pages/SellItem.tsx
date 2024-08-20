@@ -19,7 +19,7 @@ const SellItem = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:3000/v1/items', {
+      const response = await fetch('https://capiall-olx-1.onrender.com/v1/items', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -11,7 +11,7 @@ const Signup = () => {
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3000/v1/register', { fullName, email, password });
+      await axios.post('https://capiall-olx-1.onrender.com/v1/register', { fullName, email, password });
       navigate('/login');
     } catch (error) {
       alert('Failed to register');
