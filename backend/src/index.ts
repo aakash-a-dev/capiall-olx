@@ -23,8 +23,6 @@ app.use("/v1", listItem);
 app.use("/v1", myItem);
 app.use("/v1", myPurchase);
 
-
-
 app.listen(PORT, ()=>{
     console.log(`Server is running on http://localhost:${PORT}`)
 })
